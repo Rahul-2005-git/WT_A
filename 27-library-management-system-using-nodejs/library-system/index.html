@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            padding: 20px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            width: 200px;
+        }
+
+        table {
+            margin: auto;
+            border-collapse: collapse;
+            width: 90%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        th {
+            background: #333;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>📚 Library Management System</h2>
+
+<!-- Form -->
+<input id="id" placeholder="Book ID">
+<input id="title" placeholder="Title">
+<input id="author" placeholder="Author">
+<input id="year" placeholder="Year">
+
+<br>
+
+<button onclick="addBook()">Add Book</button>
+<button onclick="loadBooks()">Show Books</button>
+
+<br><br>
+
+<table id="table">
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Year</th>
+    </tr>
+</table>
+
+<script>
+
+// Add Book
+function addBook() {
+    fetch("http://localhost:5000/addBook", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            book_id: document.getElementById("id").value,
+            title: document.getElementById("title").value,
+            author: document.getElementById("author").value,
+            year: document.getElementById("year").value
+        })
+    })
+    .then(res => res.text())
+    .then(msg => {
+        alert(msg);
+        loadBooks();
+    });
+}
+
+// Load Books
+function loadBooks() {
+    fetch("http://localhost:5000/books")
+    .then(res => res.json())
+    .then(data => {
+        let table = document.getElementById("table");
+
+        table.innerHTML = `
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Year</th>
+        </tr>`;
+
+        data.forEach(book => {
+            table.innerHTML += `
+            <tr>
+                <td>${book.book_id}</td>
+                <td>${book.title}</td>
+                <td>${book.author}</td>
+                <td>${book.year}</td>
+            </tr>`;
+        });
+    });
+}
+
+</script>
+
+</body>
+</html>
