@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Currency Converter - USD to INR</title>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+const { useState, useEffect } = React;
+
+function CurrencyConverter() {
+  const [amount, setAmount] = useState('');
+  const [rate, setRate] = useState(83.47); // fallback rate
+  const [fetchedRate, setFetchedRate] = useState(false);
+  const [history, setHistory] = useState([]);
+  const [direction, setDirection] = useState('usd-to-inr');
+
+  // Try to fetch live rate
+  useEffect(() => {
+    fetch('https://api.exchangerate-api.com/v4/latest/USD')
+      .then(r => r.json())
+      .then(data => { setRate(data.rates.INR); setFetchedRate(true); })
+      .catch(() => {});
+  }, []);
+
+  const handleConvert = () => {
+    const num = parseFloat(amount);
+    if (isNaN(num) || num <= 0) return;
+
+    const result = direction === 'usd-to-inr' ? (num * rate).toFixed(2) : (num / rate).toFixed(2);
+    const from = direction === 'usd-to-inr' ? `$${num.toFixed(2)} USD` : `₹${num.toFixed(2)} INR`;
+    const to = direction === 'usd-to-inr' ? `₹${result} INR` : `$${result} USD`;
+
+    setHistory(prev => [{from, to, time: new Date().toLocaleTimeString()}, ...prev.slice(0,9)]);
+    setAmount('');
+  };
+
+  const converted = (() => {
+    const num = parseFloat(amount);
+    if (isNaN(num) || num <= 0) return null;
+    return direction === 'usd-to-inr' ? (num * rate).toFixed(2) : (num / rate).toFixed(2);
+  })();
+
+  const fromSymbol = direction === 'usd-to-inr' ? '$' : '₹';
+  const toSymbol = direction === 'usd-to-inr' ? '₹' : '$';
+  const fromLabel = direction === 'usd-to-inr' ? 'USD' : 'INR';
+  const toLabel = direction === 'usd-to-inr' ? 'INR' : 'USD';
+
+  return (
+    <div style={styles.wrapper}>
+      <div style={styles.card}>
+        <div style={styles.header}>
+          <div style={styles.flag}>💱</div>
+          <h1 style={styles.title}>Currency Converter</h1>
+          <p style={styles.subtitle}>
+            {fetchedRate ? '🟢 Live Rate' : '🟡 Approximate Rate'}: 1 USD = ₹{rate.toFixed(2)} INR
+          </p>
+        </div>
+
+        <div style={styles.directionRow}>
+          <button
+            style={direction === 'usd-to-inr' ? {...styles.dirBtn, ...styles.dirBtnActive} : styles.dirBtn}
+            onClick={() => setDirection('usd-to-inr')}
+          >🇺🇸 USD → INR 🇮🇳</button>
+          <button
+            style={direction === 'inr-to-usd' ? {...styles.dirBtn, ...styles.dirBtnActive} : styles.dirBtn}
+            onClick={() => setDirection('inr-to-usd')}
+          >🇮🇳 INR → USD 🇺🇸</button>
+        </div>
+
+        <div style={styles.inputGroup}>
+          <span style={styles.symbol}>{fromSymbol}</span>
+          <input
+            type="number"
+            value={amount}
+            onChange={e => setAmount(e.target.value)}
+            onKeyDown={e => e.key === 'Enter' && handleConvert()}
+            placeholder={`Enter amount in ${fromLabel}`}
+            style={styles.input}
+            min="0"
+          />
+          <span style={styles.currency}>{fromLabel}</span>
+        </div>
+
+        {converted && (
+          <div style={styles.result}>
+            <div style={styles.resultLabel}>Converted Amount</div>
+            <div style={styles.resultAmount}>{toSymbol}{parseFloat(converted).toLocaleString('en-IN', {minimumFractionDigits: 2})}</div>
+            <div style={styles.resultCurrency}>{toLabel}</div>
+          </div>
+        )}
+
+        <button onClick={handleConvert} style={styles.convertBtn} disabled={!amount || parseFloat(amount) <= 0}>
+          Convert
+        </button>
+
+        <div style={styles.quickAmounts}>
+          {(direction === 'usd-to-inr' ? [1, 10, 100, 500, 1000] : [100, 500, 1000, 5000, 10000]).map(a => (
+            <button key={a} onClick={() => setAmount(String(a))} style={styles.quickBtn}>
+              {fromSymbol}{a}
+            </button>
+          ))}
+        </div>
+
+        {history.length > 0 && (
+          <div style={styles.historySection}>
+            <h3 style={styles.historyTitle}>Recent Conversions</h3>
+            {history.map((h, i) => (
+              <div key={i} style={styles.historyItem}>
+                <span style={{color:'#64748b', fontSize:'13px'}}>{h.time}</span>
+                <span style={{fontWeight:'600'}}>{h.from} → {h.to}</span>
+              </div>
+            ))}
+            <button onClick={() => setHistory([])} style={styles.clearBtn}>Clear History</button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+const styles = {
+  wrapper: { minHeight:'100vh', background:'linear-gradient(135deg,#0f0c29,#302b63,#24243e)', display:'flex', alignItems:'center', justifyContent:'center', padding:'20px', fontFamily:"'Segoe UI', sans-serif" },
+  card: { background:'rgba(255,255,255,0.08)', backdropFilter:'blur(20px)', border:'1px solid rgba(255,255,255,0.15)', borderRadius:'24px', padding:'40px', width:'100%', maxWidth:'480px', color:'white' },
+  header: { textAlign:'center', marginBottom:'30px' },
+  flag: { fontSize:'48px', marginBottom:'10px' },
+  title: { fontSize:'28px', fontWeight:'700', margin:'0 0 8px', background:'linear-gradient(135deg,#f6d365,#fda085)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent' },
+  subtitle: { fontSize:'14px', color:'rgba(255,255,255,0.6)', margin:0 },
+  directionRow: { display:'flex', gap:'10px', marginBottom:'25px' },
+  dirBtn: { flex:1, padding:'10px', background:'rgba(255,255,255,0.05)', border:'1px solid rgba(255,255,255,0.15)', borderRadius:'10px', color:'rgba(255,255,255,0.6)', cursor:'pointer', fontSize:'13px', fontWeight:'600' },
+  dirBtnActive: { background:'rgba(246,211,101,0.2)', borderColor:'#f6d365', color:'#f6d365' },
+  inputGroup: { display:'flex', alignItems:'center', background:'rgba(255,255,255,0.08)', border:'2px solid rgba(255,255,255,0.15)', borderRadius:'14px', padding:'5px 15px', marginBottom:'20px', gap:'10px' },
+  symbol: { fontSize:'24px', fontWeight:'700', color:'#f6d365', minWidth:'20px' },
+  input: { flex:1, background:'none', border:'none', outline:'none', fontSize:'22px', color:'white', padding:'10px 0', fontFamily:'inherit' },
+  currency: { color:'rgba(255,255,255,0.5)', fontSize:'14px', fontWeight:'600' },
+  result: { background:'linear-gradient(135deg,rgba(246,211,101,0.15),rgba(253,160,133,0.15))', border:'1px solid rgba(246,211,101,0.3)', borderRadius:'14px', padding:'20px', textAlign:'center', marginBottom:'20px' },
+  resultLabel: { fontSize:'13px', color:'rgba(255,255,255,0.6)', marginBottom:'8px' },
+  resultAmount: { fontSize:'36px', fontWeight:'700', color:'#f6d365' },
+  resultCurrency: { fontSize:'16px', color:'rgba(255,255,255,0.6)', marginTop:'4px' },
+  convertBtn: { width:'100%', padding:'14px', background:'linear-gradient(135deg,#f6d365,#fda085)', border:'none', borderRadius:'12px', fontSize:'17px', fontWeight:'700', color:'#1a1a2e', cursor:'pointer', marginBottom:'20px' },
+  quickAmounts: { display:'flex', gap:'8px', flexWrap:'wrap', marginBottom:'20px' },
+  quickBtn: { padding:'6px 14px', background:'rgba(255,255,255,0.08)', border:'1px solid rgba(255,255,255,0.15)', borderRadius:'20px', color:'rgba(255,255,255,0.8)', cursor:'pointer', fontSize:'13px' },
+  historySection: { borderTop:'1px solid rgba(255,255,255,0.1)', paddingTop:'20px' },
+  historyTitle: { fontSize:'16px', fontWeight:'600', marginBottom:'12px', color:'rgba(255,255,255,0.8)' },
+  historyItem: { display:'flex', justifyContent:'space-between', alignItems:'center', padding:'8px 0', borderBottom:'1px solid rgba(255,255,255,0.05)', fontSize:'14px' },
+  clearBtn: { marginTop:'12px', background:'rgba(248,113,113,0.2)', border:'1px solid rgba(248,113,113,0.3)', color:'#fca5a5', padding:'6px 16px', borderRadius:'8px', cursor:'pointer', fontSize:'13px' }
+};
+
+ReactDOM.createRoot(document.getElementById('root')).render(<CurrencyConverter />);
+</script>
+</body>
+</html>

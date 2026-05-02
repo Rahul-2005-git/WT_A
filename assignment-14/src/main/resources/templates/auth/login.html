@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Login - BookHaven</title>
+<style>
+body { font-family: Georgia, serif; background: linear-gradient(135deg, #1a1a2e, #0f3460); min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+.card { background: white; padding: 40px; border-radius: 16px; width: 380px; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+h2 { text-align: center; color: #1a1a2e; margin-bottom: 25px; font-size: 26px; }
+label { display: block; font-size: 13px; color: #555; margin-bottom: 5px; font-weight: 600; }
+input[type=email], input[type=password] { width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 15px; margin-bottom: 16px; box-sizing: border-box; }
+input:focus { border-color: #0f3460; outline: none; }
+button { width: 100%; padding: 14px; background: #1a1a2e; color: #e8c96d; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; }
+.alert { background: #fed7d7; color: #9b2c2c; padding: 10px; border-radius: 8px; margin-bottom: 15px; text-align: center; font-size: 14px; }
+.success { background: #c6f6d5; color: #276749; padding: 10px; border-radius: 8px; margin-bottom: 15px; text-align: center; font-size: 14px; }
+.links { text-align: center; margin-top: 15px; font-size: 14px; }
+.links a { color: #0f3460; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="card">
+  <h2>📚 Sign In</h2>
+  <div th:if="${param.error}" class="alert">Invalid email or password.</div>
+  <div th:if="${param.logout}" class="success">Logged out successfully.</div>
+  <div th:if="${param.registered}" class="success">Registered! Please login.</div>
+  <form th:action="@{/login}" method="post">
+    <label>Email</label>
+    <input type="email" name="username" placeholder="your@email.com" required>
+    <label>Password</label>
+    <input type="password" name="password" placeholder="Password" required>
+    <button type="submit">Login</button>
+  </form>
+  <div class="links">New to BookHaven? <a href="/register">Create account</a></div>
+</div>
+</body>
+</html>

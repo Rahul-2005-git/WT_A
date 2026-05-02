@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Register - BookHaven</title>
+<style>
+body { font-family: Georgia, serif; background: linear-gradient(135deg, #1a1a2e, #0f3460); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.card { background: white; padding: 40px; border-radius: 16px; width: 420px; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+h2 { text-align: center; color: #1a1a2e; margin-bottom: 25px; }
+label { display: block; font-size: 13px; color: #555; margin-bottom: 5px; font-weight: 600; }
+input { width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 15px; margin-bottom: 16px; box-sizing: border-box; }
+input:focus { border-color: #0f3460; outline: none; }
+button { width: 100%; padding: 14px; background: #1a1a2e; color: #e8c96d; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; }
+.alert { background: #fed7d7; color: #9b2c2c; padding: 10px; border-radius: 8px; margin-bottom: 15px; text-align: center; font-size: 14px; }
+.links { text-align: center; margin-top: 15px; font-size: 14px; }
+.links a { color: #0f3460; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="card">
+  <h2>📚 Create Account</h2>
+  <div th:if="${error}" class="alert" th:text="${error}"></div>
+  <form th:action="@{/register}" method="post" th:object="${user}">
+    <label>Full Name</label>
+    <input type="text" th:field="*{fullname}" placeholder="Your full name" required>
+    <label>Email</label>
+    <input type="email" th:field="*{email}" placeholder="your@email.com" required>
+    <label>Password</label>
+    <input type="password" th:field="*{password}" placeholder="Minimum 6 characters" required>
+    <button type="submit">Create Account</button>
+  </form>
+  <div class="links">Already have an account? <a href="/login">Sign in</a></div>
+</div>
+</body>
+</html>
