@@ -1,0 +1,103 @@
+/* ===== Global Reset & Variables ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --success: #22c55e;
+  --error:   #ef4444;
+  --warning: #f59e0b;
+  --info:    #3b82f6;
+  --bg:      #0f172a;
+  --surface: #1e293b;
+  --text:    #f1f5f9;
+}
+
+body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; }
+
+/* ===== App Layout ===== */
+.app { min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+
+.app__header {
+  text-align: center;
+  padding: 3rem 1rem 1rem;
+}
+.app__header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+.app__header p  { color: #94a3b8; }
+
+.app__main { margin-top: 2.5rem; }
+
+/* ===== Buttons ===== */
+.button-grid {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn {
+  padding: 0.75rem 1.75rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s, opacity 0.2s;
+  color: #fff;
+}
+.btn:hover  { opacity: 0.88; transform: translateY(-2px); }
+.btn:active { transform: scale(0.97); }
+
+.btn--success { background: var(--success); }
+.btn--error   { background: var(--error); }
+.btn--warning { background: var(--warning); }
+.btn--info    { background: var(--info); }
+
+/* ===== Notification Container (fixed top-right) ===== */
+.notification-container {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  z-index: 9999;
+  max-width: 360px;
+  width: 100%;
+}
+
+/* ===== Toast ===== */
+.toast {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.875rem 1rem;
+  border-radius: 10px;
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  animation: slideIn 0.3s ease;
+  border-left: 5px solid rgba(255,255,255,0.4);
+}
+
+.toast--success { background: var(--success); }
+.toast--error   { background: var(--error); }
+.toast--warning { background: var(--warning); }
+.toast--info    { background: var(--info); }
+
+.toast__message { font-size: 0.95rem; flex: 1; }
+
+.toast__close {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  margin-left: 0.75rem;
+  line-height: 1;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+.toast__close:hover { opacity: 1; }
+
+@keyframes slideIn {
+  from { transform: translateX(110%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}

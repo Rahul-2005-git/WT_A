@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theme + Form (Full Working)</title>
+
+<!-- jQuery CDN -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        transition: 0.3s;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: auto;
+    }
+
+    input, select, button {
+        width: 90%;
+        padding: 10px;
+        margin: 8px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    /* Theme 1 */
+    .theme1 {
+        background: #f0f8ff;
+        color: black;
+    }
+    .theme1 button {
+        background: #007bff;
+        color: white;
+    }
+
+    /* Theme 2 */
+    .theme2 {
+        background: #222;
+        color: white;
+    }
+    .theme2 button {
+        background: #28a745;
+        color: white;
+    }
+
+    /* Theme 3 */
+    .theme3 {
+        background: #ffe4e1;
+        color: black;
+    }
+    .theme3 button {
+        background: #ff5733;
+        color: white;
+    }
+
+    #output {
+        margin-top: 20px;
+        font-weight: bold;
+    }
+</style>
+</head>
+
+<body class="theme1">
+
+<div class="container">
+
+<h2>Theme Switcher</h2>
+
+<!-- Theme Buttons -->
+<button id="t1">Theme 1</button>
+<button id="t2">Theme 2</button>
+<button id="t3">Theme 3</button>
+
+<hr>
+
+<!-- Form -->
+<form id="myForm">
+    <input type="text" id="name" placeholder="Enter Name" required>
+    <input type="email" id="email" placeholder="Enter Email" required>
+
+    <select id="course">
+        <option value="">Select Course</option>
+        <option>CSE</option>
+        <option>IT</option>
+        <option>ENTC</option>
+        <option>MECH</option>   
+    </select>
+
+    <button type="submit">Submit</button>
+</form>
+
+<!-- Output -->
+<div id="output"></div>
+
+</div>
+
+<script>
+$(document).ready(function(){
+
+    // Theme Switch
+    $("#t1").click(function(){
+        $("body").removeClass().addClass("theme1");
+    });
+
+    $("#t2").click(function(){
+        $("body").removeClass().addClass("theme2");
+    });
+
+    $("#t3").click(function(){
+        $("body").removeClass().addClass("theme3");
+    });
+
+    // Form Submit
+    $("#myForm").submit(function(e){
+        e.preventDefault();
+
+        let name = $("#name").val();
+        let email = $("#email").val();
+        let course = $("#course").val();
+
+        if(course === ""){
+            alert("Please select a course!");
+            return;
+        }
+
+        $("#output").html(`
+            <p>✅ Submitted Successfully!</p>
+            <p>Name: ${name}</p>
+            <p>Email: ${email}</p>
+            <p>Course: ${course}</p>
+        `);
+
+        // Clear form
+        $("#myForm")[0].reset();
+    });
+
+});
+</script>
+
+</body>
+</html>
