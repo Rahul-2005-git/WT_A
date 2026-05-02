@@ -1,34 +1,63 @@
-// User.java — Extended entity with failed login tracking and account locking
-
 package com.example.loginlock.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
 import java.time.LocalDateTime;
 
+
 @Entity
-@Table(name = "users")
-@Data
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false)
     private String username;
+    private String password;
 
-    @Column(nullable = false)
-    private String password;   // BCrypt-hashed
-
-    // Number of consecutive failed login attempts
-    private int failedAttempts = 0;
-
-    // Timestamp when account was locked (null = not locked)
+    private int failedAttempts;
     private LocalDateTime lockTime;
 
-    // Derived: is the account currently locked?
-    public boolean isAccountLocked() {
-        return lockTime != null;
+    // ✅ GETTERS & SETTERS
+
+    public Long getId() {
+        return id;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getFailedAttempts() {
+        return failedAttempts;
+    }
+
+    public void setFailedAttempts(int failedAttempts) {
+        this.failedAttempts = failedAttempts;
+    }
+
+    public LocalDateTime getLockTime() {
+        return lockTime;
+    }
+
+    public void setLockTime(LocalDateTime lockTime) {
+        this.lockTime = lockTime;
+    }
+ 
+
+public boolean isAccountLocked() {
+    if (lockTime == null) return false;
+    return lockTime.plusMinutes(5).isAfter(LocalDateTime.now());
+}
 }

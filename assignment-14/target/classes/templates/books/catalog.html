@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head><title>Catalog - BookHaven</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Georgia, serif; background: #faf8f5; }
+nav { background: #1a1a2e; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; }
+.logo { color: #e8c96d; font-size: 24px; font-weight: bold; text-decoration: none; }
+nav a { color: rgba(255,255,255,0.8); text-decoration: none; margin-left: 20px; }
+.catalog-header { background: #1a1a2e; color: white; padding: 40px; text-align: center; }
+.catalog-header h1 { color: #e8c96d; font-size: 36px; }
+.search-bar { margin: 20px auto; max-width: 500px; display: flex; gap: 10px; }
+.search-bar input { flex: 1; padding: 12px 16px; border: none; border-radius: 8px; font-size: 15px; }
+.search-bar button { padding: 12px 20px; background: #e8c96d; color: #1a1a2e; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
+.filters { display: flex; gap: 10px; justify-content: center; margin-top: 15px; flex-wrap: wrap; }
+.filters a { padding: 6px 16px; background: rgba(255,255,255,0.1); color: white; border-radius: 20px; text-decoration: none; font-size: 14px; }
+.filters a:hover { background: #e8c96d; color: #1a1a2e; }
+.content { padding: 40px; max-width: 1200px; margin: auto; }
+.books-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 25px; }
+.book-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 15px rgba(0,0,0,0.08); transition: transform 0.2s; }
+.book-card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(0,0,0,0.15); }
+.book-cover { height: 200px; display: flex; align-items: center; justify-content: center; font-size: 60px; }
+.c1 { background: linear-gradient(135deg, #667eea, #764ba2); }
+.c2 { background: linear-gradient(135deg, #f093fb, #f5576c); }
+.c3 { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+.c4 { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+.c5 { background: linear-gradient(135deg, #fa709a, #fee140); }
+.book-info { padding: 15px; }
+.book-title { font-size: 15px; font-weight: bold; margin-bottom: 5px; }
+.book-author { color: #888; font-size: 13px; margin-bottom: 8px; }
+.book-price { color: #e67e22; font-size: 20px; font-weight: bold; }
+.book-cat { display: inline-block; font-size: 11px; background: #f0f0f0; padding: 2px 8px; border-radius: 10px; color: #666; margin-bottom: 8px; }
+.no-books { text-align: center; padding: 60px; color: #888; font-size: 18px; }
+</style>
+</head>
+<body>
+<nav>
+  <a href="/home" class="logo">📚 BookHaven</a>
+  <div>
+    <a href="/home">Home</a>
+    <a href="/catalog">Catalog</a>
+    <a sec:authorize="!isAuthenticated()" href="/login">Login</a>
+    <a sec:authorize="!isAuthenticated()" href="/register">Register</a>
+    <a sec:authorize="isAuthenticated()" href="/logout">Logout</a>
+  </div>
+</nav>
+<div class="catalog-header">
+  <h1>Book Catalog</h1>
+  <form action="/catalog" method="get" class="search-bar">
+    <input type="text" name="search" th:value="${search}" placeholder="Search by title...">
+    <button type="submit">Search</button>
+  </form>
+  <div class="filters">
+    <a href="/catalog">All</a>
+    <a href="/catalog?category=Fiction">Fiction</a>
+    <a href="/catalog?category=Science">Science</a>
+    <a href="/catalog?category=Technology">Technology</a>
+    <a href="/catalog?category=History">History</a>
+    <a href="/catalog?category=Self-Help">Self-Help</a>
+  </div>
+</div>
+<div class="content">
+  <div class="books-grid" th:if="${!books.isEmpty()}">
+    <div th:each="book, stat : ${books}" class="book-card">
+      <div th:class="'book-cover c' + ${(stat.index % 5) + 1}">📖</div>
+      <div class="book-info">
+        <span class="book-cat" th:text="${book.category}">Fiction</span>
+        <div class="book-title" th:text="${book.title}">Title</div>
+        <div class="book-author" th:text="${book.author}">Author</div>
+        <div class="book-price">₹<span th:text="${book.price}">299</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="no-books" th:if="${books.isEmpty()}">
+    <p>📭 No books found. Try a different search or <a href="/catalog">view all books</a>.</p>
+  </div>
+</div>
+</body>
+</html>
