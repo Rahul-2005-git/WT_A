@@ -1,0 +1,156 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  color: #333;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Header Styling */
+.header {
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.header .subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  padding: 30px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.form-section {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  height: fit-content;
+}
+
+.feedback-section {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  max-height: 800px;
+  overflow-y: auto;
+}
+
+/* Footer */
+.footer {
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: auto;
+}
+
+.footer p {
+  margin: 0;
+}
+
+/* Scrollbar Styling */
+.feedback-section::-webkit-scrollbar {
+  width: 8px;
+}
+
+.feedback-section::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.feedback-section::-webkit-scrollbar-thumb {
+  background: #667eea;
+  border-radius: 10px;
+}
+
+.feedback-section::-webkit-scrollbar-thumb:hover {
+  background: #764ba2;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .main-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px 15px;
+  }
+
+  .feedback-section {
+    max-height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 1.8rem;
+  }
+
+  .header .subtitle {
+    font-size: 1rem;
+  }
+
+  .main-content {
+    padding: 15px 10px;
+    gap: 15px;
+  }
+
+  .form-section,
+  .feedback-section {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 20px 10px;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .main-content {
+    padding: 10px;
+  }
+
+  .form-section,
+  .feedback-section {
+    padding: 10px;
+  }
+}

@@ -1,0 +1,361 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* Main Content */
+.main-content {
+    padding: 40px 20px;
+}
+
+/* Calculator Section */
+.calculator-section {
+    margin-bottom: 40px;
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 8px rgba(102, 126, 234, 0.3);
+}
+
+/* Buttons */
+.btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-right: 10px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: #999;
+    color: white;
+    width: 100%;
+}
+
+.btn-secondary:hover {
+    background: #777;
+    transform: translateY(-2px);
+}
+
+/* Result Messages */
+.success,
+.error {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    animation: slideIn 0.5s ease-out;
+}
+
+.success {
+    background: #d4edda;
+    border: 2px solid #28a745;
+    color: #155724;
+}
+
+.success h3 {
+    color: #155724;
+    margin-bottom: 15px;
+}
+
+.success p {
+    margin: 8px 0;
+}
+
+.error {
+    background: #f8d7da;
+    border: 2px solid #dc3545;
+    color: #721c24;
+}
+
+.breakdown {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 15px;
+    border-radius: 5px;
+    margin: 15px 0;
+    font-size: 0.95rem;
+}
+
+.bill-amount {
+    color: #28a745;
+    font-size: 1.8rem;
+    margin-top: 15px;
+    text-align: center;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Pricing Section */
+.pricing-section {
+    margin-bottom: 40px;
+}
+
+.pricing-section h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.pricing-table {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.pricing-row {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+}
+
+.pricing-row:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.pricing-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.range {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+}
+
+.price {
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+/* Examples Section */
+.examples-section {
+    margin-bottom: 20px;
+}
+
+.examples-section h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.example-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #e0e0e0;
+    transition: all 0.3s;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.example-box:hover {
+    border-color: #667eea;
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.2);
+    transform: translateY(-5px);
+}
+
+.example-box h4 {
+    color: #667eea;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.example-box p {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.example-box strong {
+    color: #28a745;
+    font-size: 1.05rem;
+}
+
+/* Footer */
+.footer {
+    background: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+    color: #666;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 1.8rem;
+    }
+
+    .header p {
+        font-size: 1rem;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+
+    .calculator-section {
+        padding: 20px;
+    }
+
+    .btn {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .pricing-table {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .examples {
+        grid-template-columns: 1fr;
+    }
+
+    .pricing-section h2,
+    .examples-section h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        border-radius: 10px;
+    }
+
+    .header {
+        padding: 20px 10px;
+    }
+
+    .header h1 {
+        font-size: 1.5rem;
+    }
+
+    .main-content {
+        padding: 15px;
+    }
+
+    .calculator-section {
+        padding: 15px;
+    }
+
+    .pricing-table {
+        grid-template-columns: 1fr;
+    }
+
+    .pricing-section h2,
+    .examples-section h2 {
+        font-size: 1.3rem;
+    }
+
+    label {
+        font-size: 1rem;
+    }
+
+    input[type="number"] {
+        padding: 10px;
+        font-size: 16px;
+    }
+}

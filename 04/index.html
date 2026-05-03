@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Processing & Session Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-content">
+                <h2>Form & Session Demo</h2>
+                <div class="nav-links">
+                    <span id="userGreeting" style="display:none;">
+                        Welcome, <strong id="welcomeName"></strong>
+                        <button class="btn-logout" onclick="logout()">Logout</button>
+                    </span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="content">
+            <!-- Login/Signup Forms -->
+            <div class="form-container" id="formContainer">
+                <!-- Signup Form -->
+                <div class="form-section active" id="signupForm">
+                    <h1>Create Account</h1>
+                    <form id="registrationForm" onsubmit="handleSignup(event)">
+                        <div class="form-group">
+                            <label for="name">Full Name:</label>
+                            <input type="text" id="name" name="name" required placeholder="John Doe">
+                            <span class="error" id="nameError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required placeholder="john@example.com">
+                            <span class="error" id="emailError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" required
+                                placeholder="Min 6 characters">
+                            <span class="error" id="passwordError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" id="rememberMe"> Remember me
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                        <p class="toggle-form">Already have account? <a href="#" onclick="toggleForm()">Login</a></p>
+                    </form>
+                </div>
+
+                <!-- Login Form -->
+                <div class="form-section" id="loginForm">
+                    <h1>Login</h1>
+                    <form id="loginFormElement" onsubmit="handleLogin(event)">
+                        <div class="form-group">
+                            <label for="loginEmail">Email:</label>
+                            <input type="email" id="loginEmail" name="email" required placeholder="john@example.com">
+                            <span class="error" id="loginEmailError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="loginPassword">Password:</label>
+                            <input type="password" id="loginPassword" name="password" required
+                                placeholder="Enter password">
+                            <span class="error" id="loginPasswordError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" id="rememberLogin"> Remember me
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-success">Login</button>
+                        <p class="toggle-form">Don't have account? <a href="#" onclick="toggleForm()">Sign Up</a></p>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Dashboard (shown after login) -->
+            <div class="dashboard" id="dashboard" style="display:none;">
+                <h1>Dashboard</h1>
+                <div class="user-info">
+                    <div class="info-box">
+                        <h3>User Information</h3>
+                        <p><strong>Name:</strong> <span id="displayName"></span></p>
+                        <p><strong>Email:</strong> <span id="displayEmail"></span></p>
+                        <p><strong>Login Time:</strong> <span id="displayLoginTime"></span></p>
+                        <p><strong>Session ID:</strong> <span id="displaySessionId"></span></p>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>Cookie Information</h3>
+                        <p><strong>Cookie Name:</strong> <span id="cookieName">username</span></p>
+                        <p><strong>Cookie Value:</strong> <span id="cookieValue"></span></p>
+                        <p><strong>Cookie Expires:</strong> <span id="cookieExpires"></span></p>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>Session Storage</h3>
+                        <p><strong>Session Data:</strong> <span id="sessionData"></span></p>
+                        <p><strong>Session Valid:</strong> <span id="sessionValid"></span></p>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-info" onclick="showFormData()">View Form Data</button>
+                    <button class="btn btn-info" onclick="showCookieData()">View Cookie Data</button>
+                    <button class="btn btn-danger" onclick="logout()">Logout</button>
+                </div>
+            </div>
+
+            <!-- Request Info Section -->
+            <div class="info-section" id="infoSection" style="display:none;">
+                <h2>Form Processing Methods</h2>
+                <div class="method-box">
+                    <h3>GET Method (URL Parameters)</h3>
+                    <pre id="getOutput"></pre>
+                </div>
+                <div class="method-box">
+                    <h3>POST Method (Form Body)</h3>
+                    <pre id="postOutput"></pre>
+                </div>
+                <button class="btn btn-secondary" onclick="closeInfo()">Close</button>
+            </div>
+        </div>
+
+        <!-- Info Box -->
+        <div class="info-box-footer">
+            <h3>How This Works:</h3>
+            <ul>
+                <li><strong>Form Validation:</strong> Email format checked with regex, password min 6 chars</li>
+                <li><strong>Cookies:</strong> Username stored for 7 days (if Remember Me checked)</li>
+                <li><strong>Session:</strong> Session data stored in sessionStorage (cleared on tab close)</li>
+                <li><strong>GET/POST:</strong> Simulated in console (click View Form Data)</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

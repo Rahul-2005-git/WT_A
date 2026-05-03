@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Operations</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Array Operations</h1>
+
+        <!-- Input Section -->
+        <div class="input-section">
+            <div class="form-group">
+                <label for="arrayInput">Enter array elements (comma-separated):</label>
+                <input type="text" id="arrayInput" placeholder="e.g., 5, 2, 8, 1, 9" value="5, 2, 8, 1, 9">
+            </div>
+
+            <!-- Original Array Display -->
+            <div class="display-box">
+                <h3>Original Array:</h3>
+                <p id="originalArray" class="array-display">[ ]</p>
+            </div>
+        </div>
+
+        <!-- Operation Buttons -->
+        <div class="button-section">
+            <button class="btn btn-primary" onclick="reverseArray()">Reverse</button>
+            <button class="btn btn-success" onclick="sortAscending()">Sort Ascending</button>
+            <button class="btn btn-success" onclick="sortDescending()">Sort Descending</button>
+            <button class="btn btn-info" onclick="linearSearch()">Linear Search</button>
+            <button class="btn btn-info" onclick="binarySearch()">Binary Search</button>
+            <button class="btn btn-danger" onclick="reset()">Reset</button>
+        </div>
+
+        <!-- Search Input -->
+        <div class="search-section" id="searchSection" style="display:none;">
+            <input type="text" id="searchValue" placeholder="Enter value to search">
+            <button class="btn btn-primary" onclick="performSearch()">Search</button>
+        </div>
+
+        <!-- Results Section -->
+        <div class="results-section">
+            <h3>Result:</h3>
+            <div class="display-box">
+                <p id="result" class="result-display">[ ]</p>
+            </div>
+            <p id="message" class="message"></p>
+        </div>
+
+        <!-- Information Section -->
+        <div class="info-section">
+            <h3>Operations Info:</h3>
+            <div class="info-box">
+                <p><strong>Reverse:</strong> Reverses the order of array elements</p>
+                <p><strong>Sort Ascending:</strong> Sorts array in ascending order (smallest to largest)</p>
+                <p><strong>Sort Descending:</strong> Sorts array in descending order (largest to smallest)</p>
+                <p><strong>Linear Search:</strong> Searches by checking each element sequentially</p>
+                <p><strong>Binary Search:</strong> Searches in sorted array by dividing into halves (efficient)</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

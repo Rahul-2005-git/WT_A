@@ -1,0 +1,242 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+}
+
+h3 {
+    color: #667eea;
+    margin: 20px 0 15px;
+    font-size: 1.2rem;
+}
+
+/* Input Section */
+.input-section {
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 600;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 8px rgba(102, 126, 234, 0.3);
+}
+
+/* Display Boxes */
+.display-box {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+    margin: 15px 0;
+}
+
+.array-display,
+.result-display {
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    color: #333;
+    padding: 15px;
+    background: white;
+    border-radius: 5px;
+    word-break: break-word;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+/* Button Section */
+.button-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 30px 0;
+    justify-content: center;
+}
+
+.btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    color: white;
+}
+
+.btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(17, 153, 142, 0.4);
+}
+
+.btn-info {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+}
+
+.btn-info:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(79, 172, 254, 0.4);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+}
+
+.btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(245, 87, 108, 0.4);
+}
+
+/* Search Section */
+.search-section {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+    justify-content: center;
+}
+
+.search-section input {
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 200px;
+}
+
+.search-section input:focus {
+    outline: none;
+    border-color: #4facfe;
+    box-shadow: 0 0 8px rgba(79, 172, 254, 0.3);
+}
+
+/* Results Section */
+.results-section {
+    margin: 30px 0;
+}
+
+.message {
+    font-size: 1.05rem;
+    color: #764ba2;
+    font-weight: 600;
+    margin-top: 15px;
+    padding: 10px;
+    background: #f0e6ff;
+    border-radius: 5px;
+    display: none;
+}
+
+.message.show {
+    display: block;
+}
+
+/* Info Section */
+.info-section {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 10px;
+    margin-top: 40px;
+    border-top: 3px solid #667eea;
+}
+
+.info-box {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.info-box p {
+    padding: 8px 0;
+    color: #555;
+    line-height: 1.6;
+}
+
+.info-box strong {
+    color: #667eea;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .button-section {
+        gap: 8px;
+    }
+
+    .btn {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+
+    .search-section {
+        flex-direction: column;
+    }
+
+    .search-section input {
+        width: 100%;
+    }
+}

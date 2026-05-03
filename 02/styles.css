@@ -1,0 +1,396 @@
+/* ===== Global Styles ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+/* ===== Header Section ===== */
+.header-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 60px 0;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.header-section h1 {
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.header-section p {
+    font-size: 1.1rem;
+}
+
+/* ===== Nav Pills Styling ===== */
+.nav-pills {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.pill-btn {
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-weight: 600;
+    color: #666;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    flex: 1;
+    min-width: 120px;
+}
+
+.pill-btn:hover {
+    background-color: #e9ecef;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.pill-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: #667eea;
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+}
+
+.pill-btn i {
+    font-size: 1.2rem;
+}
+
+/* ===== Tab Content ===== */
+.tab-content {
+    animation: fadeIn 0.5s ease-in;
+}
+
+.tab-pane {
+    transition: all 0.3s ease;
+}
+
+.tab-pane.show {
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== Content Card ===== */
+.content-card {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.content-card:hover {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+.content-card h2 {
+    color: #667eea;
+    font-weight: 700;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.content-card p {
+    color: #666;
+    font-size: 1.05rem;
+}
+
+/* ===== Icon Box ===== */
+.icon-box {
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+    transition: all 0.3s ease;
+}
+
+.icon-box:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+}
+
+.icon-box i {
+    font-size: 4rem;
+    color: white;
+}
+
+/* ===== Feature List ===== */
+.feature-list {
+    list-style: none;
+    padding: 0;
+}
+
+.feature-list li {
+    padding: 12px 0;
+    padding-left: 30px;
+    position: relative;
+    color: #555;
+    font-size: 1rem;
+}
+
+.feature-list li:before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #667eea;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.feature-list strong {
+    color: #333;
+}
+
+/* ===== Badge Styling ===== */
+.badge {
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    font-weight: 600;
+    border-radius: 20px;
+}
+
+.badge.bg-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+}
+
+.badge.bg-success {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%) !important;
+}
+
+.badge.bg-warning {
+    background: linear-gradient(135deg, #f2994e 0%, #f2c94c 100%) !important;
+    color: white;
+}
+
+.badge.bg-info {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%) !important;
+    color: white;
+}
+
+/* ===== Comparison Section ===== */
+.comparison-section {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.comparison-section h3 {
+    color: #333;
+    font-weight: 700;
+    font-size: 1.8rem;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.table thead th {
+    color: white;
+    font-weight: 700;
+    padding: 15px;
+    border: none;
+}
+
+.table tbody td {
+    padding: 15px;
+    vertical-align: middle;
+    border-color: #e9ecef;
+}
+
+.table tbody tr {
+    transition: all 0.3s ease;
+}
+
+.table tbody tr:hover {
+    background-color: #f8f9fa;
+    transform: scale(1.01);
+}
+
+.table tbody tr:hover td {
+    color: #667eea;
+    font-weight: 500;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(102, 126, 234, 0.05);
+}
+
+/* ===== Footer Section ===== */
+.footer-section {
+    background-color: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+    margin-top: 60px;
+}
+
+.footer-section p {
+    color: #999;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+    .header-section {
+        padding: 40px 0;
+    }
+
+    .header-section h1 {
+        font-size: 1.8rem;
+    }
+
+    .nav-pills {
+        flex-direction: column;
+    }
+
+    .pill-btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .content-card {
+        padding: 25px;
+    }
+
+    .content-card h2 {
+        font-size: 1.5rem;
+    }
+
+    .icon-box {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 30px;
+    }
+
+    .icon-box i {
+        font-size: 3rem;
+    }
+
+    .comparison-section {
+        padding: 20px;
+    }
+
+    .table {
+        font-size: 0.9rem;
+    }
+
+    .table thead th,
+    .table tbody td {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .header-section {
+        padding: 30px 0;
+    }
+
+    .header-section h1 {
+        font-size: 1.5rem;
+    }
+
+    .header-section p {
+        font-size: 1rem;
+    }
+
+    .pill-btn {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+        min-width: 100px;
+    }
+
+    .pill-btn i {
+        font-size: 1rem;
+        margin-right: 5px !important;
+    }
+
+    .content-card {
+        padding: 20px;
+    }
+
+    .content-card h2 {
+        font-size: 1.3rem;
+    }
+
+    .feature-list li {
+        font-size: 0.95rem;
+        padding-left: 25px;
+    }
+
+    .badge {
+        font-size: 0.75rem;
+        padding: 5px 8px;
+        margin-bottom: 5px;
+    }
+
+    .table thead th {
+        padding: 8px 5px;
+        font-size: 0.85rem;
+    }
+
+    .table tbody td {
+        padding: 8px 5px;
+        font-size: 0.85rem;
+    }
+}
+
+/* ===== Scroll Styles ===== */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #667eea;
+}
+
+/* ===== Utility Classes ===== */
+.text-white-50 {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.gap-2 {
+    gap: 10px !important;
+}

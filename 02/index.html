@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIT Projects - SDP, EDI, DT, Course</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header-section">
+        <div class="container py-5 text-center">
+            <h1 class="display-4 fw-bold text-white mb-3">VIT Projects</h1>
+            <p class="lead text-white-50">Explore the relevance and importance of SDP, EDI, DT, and Course Projects</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <!-- Nav Pills/Tabs -->
+                    <ul class="nav nav-pills nav-fill mb-5 gap-2 flex-wrap" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active pill-btn" id="sdp-tab" data-bs-toggle="tab"
+                                data-bs-target="#sdp" type="button" role="tab" aria-controls="sdp" aria-selected="true">
+                                <i class="fas fa-code me-2"></i>SDP
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link pill-btn" id="edi-tab" data-bs-toggle="tab" data-bs-target="#edi"
+                                type="button" role="tab" aria-controls="edi" aria-selected="false">
+                                <i class="fas fa-flask me-2"></i>EDI
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link pill-btn" id="dt-tab" data-bs-toggle="tab" data-bs-target="#dt"
+                                type="button" role="tab" aria-controls="dt" aria-selected="false">
+                                <i class="fas fa-robot me-2"></i>DT
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link pill-btn" id="course-tab" data-bs-toggle="tab"
+                                data-bs-target="#course" type="button" role="tab" aria-controls="course"
+                                aria-selected="false">
+                                <i class="fas fa-book me-2"></i>Course
+                            </button>
+                        </li>
+                    </ul>
+
+                    <!-- Tab Content -->
+                    <div class="tab-content">
+                        <!-- SDP Tab -->
+                        <div class="tab-pane fade show active" id="sdp" role="tabpanel" aria-labelledby="sdp-tab">
+                            <div class="content-card">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-5 text-center mb-4 mb-lg-0">
+                                        <div class="icon-box">
+                                            <i class="fas fa-code"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <h2>Software Development Project (SDP)</h2>
+                                        <p class="text-muted mb-3">
+                                            SDP is a core project that focuses on practical software development skills.
+                                            It bridges the gap between theoretical knowledge and real-world application.
+                                        </p>
+                                        <h5 class="mt-4">Key Relevance:</h5>
+                                        <ul class="feature-list">
+                                            <li><strong>Industry-Ready Skills:</strong> Learn modern development
+                                                practices and tools</li>
+                                            <li><strong>Team Collaboration:</strong> Work with peers to develop complete
+                                                software solutions</li>
+                                            <li><strong>Problem Solving:</strong> Handle real-world challenges and
+                                                debugging</li>
+                                            <li><strong>Project Management:</strong> Learn to manage timelines and
+                                                deliverables</li>
+                                        </ul>
+                                        <div class="mt-4">
+                                            <span class="badge bg-primary me-2">Java</span>
+                                            <span class="badge bg-primary me-2">Python</span>
+                                            <span class="badge bg-primary me-2">Web Dev</span>
+                                            <span class="badge bg-primary">UI/UX</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- EDI Tab -->
+                        <div class="tab-pane fade" id="edi" role="tabpanel" aria-labelledby="edi-tab">
+                            <div class="content-card">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-5 text-center mb-4 mb-lg-0">
+                                        <div class="icon-box">
+                                            <i class="fas fa-flask"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <h2>Embedded & Design Innovation (EDI)</h2>
+                                        <p class="text-muted mb-3">
+                                            EDI focuses on embedded systems, IoT, and hardware-software integration.
+                                            It's essential for understanding modern device design and automation.
+                                        </p>
+                                        <h5 class="mt-4">Key Relevance:</h5>
+                                        <ul class="feature-list">
+                                            <li><strong>Hardware Knowledge:</strong> Understanding microcontrollers and
+                                                embedded boards</li>
+                                            <li><strong>IoT Solutions:</strong> Designing connected devices and sensors
+                                            </li>
+                                            <li><strong>Real-Time Systems:</strong> Building responsive and efficient
+                                                systems</li>
+                                            <li><strong>Innovation Focus:</strong> Creating smart solutions for everyday
+                                                problems</li>
+                                        </ul>
+                                        <div class="mt-4">
+                                            <span class="badge bg-success me-2">Arduino</span>
+                                            <span class="badge bg-success me-2">Raspberry Pi</span>
+                                            <span class="badge bg-success me-2">IoT</span>
+                                            <span class="badge bg-success">C/C++</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- DT Tab -->
+                        <div class="tab-pane fade" id="dt" role="tabpanel" aria-labelledby="dt-tab">
+                            <div class="content-card">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-5 text-center mb-4 mb-lg-0">
+                                        <div class="icon-box">
+                                            <i class="fas fa-robot"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <h2>Design Thinking (DT)</h2>
+                                        <p class="text-muted mb-3">
+                                            Design Thinking is a problem-solving methodology that emphasizes
+                                            user-centric approach. It teaches creative and innovative thinking for
+                                            real-world problems.
+                                        </p>
+                                        <h5 class="mt-4">Key Relevance:</h5>
+                                        <ul class="feature-list">
+                                            <li><strong>User Empathy:</strong> Understanding user needs and pain points
+                                            </li>
+                                            <li><strong>Ideation:</strong> Brainstorming creative solutions through
+                                                iterative processes</li>
+                                            <li><strong>Prototyping:</strong> Building and testing prototypes quickly
+                                            </li>
+                                            <li><strong>Innovation Culture:</strong> Fostering entrepreneurial mindset
+                                            </li>
+                                        </ul>
+                                        <div class="mt-4">
+                                            <span class="badge bg-warning me-2">Empathy</span>
+                                            <span class="badge bg-warning me-2">Ideation</span>
+                                            <span class="badge bg-warning me-2">Prototyping</span>
+                                            <span class="badge bg-warning">Testing</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Course Project Tab -->
+                        <div class="tab-pane fade" id="course" role="tabpanel" aria-labelledby="course-tab">
+                            <div class="content-card">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-5 text-center mb-4 mb-lg-0">
+                                        <div class="icon-box">
+                                            <i class="fas fa-book"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <h2>Course Projects</h2>
+                                        <p class="text-muted mb-3">
+                                            Course Projects are integrated into specific subjects to reinforce learning.
+                                            They provide hands-on experience in applying course concepts in practical
+                                            scenarios.
+                                        </p>
+                                        <h5 class="mt-4">Key Relevance:</h5>
+                                        <ul class="feature-list">
+                                            <li><strong>Subject Mastery:</strong> Deepening understanding of course
+                                                content</li>
+                                            <li><strong>Practical Application:</strong> Implementing theory in real
+                                                projects</li>
+                                            <li><strong>Assessment Tool:</strong> Evaluating student knowledge and
+                                                skills</li>
+                                            <li><strong>Portfolio Building:</strong> Creating projects for future job
+                                                prospects</li>
+                                        </ul>
+                                        <div class="mt-4">
+                                            <span class="badge bg-info me-2">DBMS</span>
+                                            <span class="badge bg-info me-2">Web Tech</span>
+                                            <span class="badge bg-info me-2">OOP</span>
+                                            <span class="badge bg-info">Data Structures</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comparison Table -->
+                    <div class="comparison-section mt-5 pt-5 border-top">
+                        <h3 class="text-center mb-4">Quick Comparison</h3>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Aspect</th>
+                                        <th>SDP</th>
+                                        <th>EDI</th>
+                                        <th>DT</th>
+                                        <th>Course</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Focus</strong></td>
+                                        <td>Software Dev</td>
+                                        <td>Hardware & IoT</td>
+                                        <td>Innovation</td>
+                                        <td>Theory + Practice</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Duration</strong></td>
+                                        <td>Semester Long</td>
+                                        <td>Semester Long</td>
+                                        <td>Variable</td>
+                                        <td>Per Course</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Team Size</strong></td>
+                                        <td>4-6 Members</td>
+                                        <td>3-5 Members</td>
+                                        <td>2-4 Members</td>
+                                        <td>Individual/Team</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Industry Ready</strong></td>
+                                        <td>Very High</td>
+                                        <td>High</td>
+                                        <td>Medium</td>
+                                        <td>Medium</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-section mt-5">
+        <div class="container text-center py-4">
+            <p class="text-muted mb-0">&copy; 2024 VIT Projects. All projects contribute to holistic student
+                development.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
