@@ -1,10 +1,10 @@
 <?php
-$host = 'localhost';
-$dbname = 'attendance_db';
-$user = 'root';
-$pass = '';
+$host = "localhost";
+$user = "root";
+$password = "";
+$database = "attendance_system";
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
+    $pdo = new PDO("mysql:host=$host;dbname=$database;charset=utf8", $user, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     die("DB Error: " . $e->getMessage());

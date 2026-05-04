@@ -40,7 +40,7 @@ function App() {
     const status = avg >= 40 ? "PASS" : "FAIL";
 
     try {
-      const response = await fetch("http://localhost/07/result-api/save.php", {
+      const response = await fetch("http://localhost/result/save.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
